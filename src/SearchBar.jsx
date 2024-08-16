@@ -29,7 +29,7 @@ function Search({onSearch}){
             setShowSuggestions(false);
         }
 
-    })
+    },[inputValue])
 
     const handleInputChange=(e)=>{
         setInputValue(e.target.value);
