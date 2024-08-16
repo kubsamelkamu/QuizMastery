@@ -24,6 +24,9 @@ function Search({onSearch}){
 
             const debounceTime = setTimeout(fetchSuggestions,300)
             return ()=>clearTimeout(debounceTime);
+        }else{
+            setSuggestions([]);
+            setShowSuggestions(false);
         }
 
     })
