@@ -90,3 +90,5 @@ function Search({onSearch}){
 Search.propTypes ={
     onSearch: PropTypes.func.isRequired,
 }
+
+export default Search
