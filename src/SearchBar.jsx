@@ -42,4 +42,21 @@ function Search({onSearch}){
         onSearch(username);
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'ArrowDown') {
+            setActiveSuggestionIndex((prevIndex) =>
+                prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
+            );
+        } else if (e.key === 'ArrowUp') {
+            setActiveSuggestionIndex((prevIndex) =>
+                prevIndex > 0 ? prevIndex - 1 : prevIndex
+            );
+        } else if (e.key === 'Enter') {
+            if (activeSuggestionIndex >= 0) {
+                handleSuggestionClick(suggestions[activeSuggestionIndex].login);
+            }
+        }
+    };
+
+
 }
