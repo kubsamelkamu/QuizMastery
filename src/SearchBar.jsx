@@ -8,7 +8,7 @@ function Search({onSearch}){
     const[inputValue,setInputValue] = useState('');
     const[suggestions,setSuggestions] = useState([]);
     const[showSuggestions,setShowSuggestions] = useState(false);
-    const[activesuggestionIndex,setActivesuggestionIndex] = useState(-1);
+    const[activeSuggestionIndex,setActiveSuggestionIndex] = useState(-1);
 
 
     useEffect(()=>{
@@ -84,7 +84,5 @@ function Search({onSearch}){
             )}
 
         </div>
-    )
-
-
+    );
 }
