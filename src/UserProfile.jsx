@@ -33,3 +33,17 @@ function Profile({user}){
         </div>
     );
 }
+
+Profile.propTypes = {
+    user: PropTypes.shape({
+        avatar_url: PropTypes.string.isRequired,
+        login: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        bio: PropTypes.string,
+        location: PropTypes.string,
+        public_repos: PropTypes.number.isRequired,
+        followers: PropTypes.number.isRequired,
+        following: PropTypes.number.isRequired,
+        html_url: PropTypes.string.isRequired,
+    }).isRequired,
+};
