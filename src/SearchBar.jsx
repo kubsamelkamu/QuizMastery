@@ -11,7 +11,18 @@ function Search({onSearch}){
 
 
     useEffect(()=>{
-        
+        if (inputValue.length > 0) {
+            const fetchSuggestions = async()=>{
+                try {
+                    const response = await axios.get(`https://api.github.com/search/users?q=${inputValue}`);
+                    setShowSuggestions(response.data.items);
+                    setShowSuggestions(true);
+                } catch (error) {
+                    console.error('Error Fetching Github User Suggestion:' + error);
+                }
+            }
+        }
+
     })
 
     const handleInputChange=(e)=>{
