@@ -36,4 +36,10 @@ function Search({onSearch}){
         showSuggestions(-1); // reset active suggestion
     }
 
+    const handleSuggestionClick=(username)=>{
+        setInputValue(username);
+        setShowSuggestions(false);
+        onSearch(username);
+    }
+
 }
