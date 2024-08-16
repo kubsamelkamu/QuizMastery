@@ -15,3 +15,7 @@ export function ThemeProvider({children}){
         </ThemeContext.Provider>
     )
 }
+
+ThemeProvider.propTypes = {
+    children: PropTypes.string.isRequired,
+}
