@@ -23,6 +23,9 @@ function Profile({user}){
                     <p><strong>Followers:</strong> {user.followers}</p>
                     <p><strong>Following:</strong> {user.following}</p>
                 </div>
+                <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-500">
+                    View GitHub Profile
+                </a>
             </div>
         </div>
 
