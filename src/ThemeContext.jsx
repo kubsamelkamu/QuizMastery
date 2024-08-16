@@ -1,5 +1,5 @@
 import { createContext,useState } from "react";
-
+import PropTypes from 'prop-types';
 export const ThemeContext = createContext();
 
 export function ThemeProvider({children}){
