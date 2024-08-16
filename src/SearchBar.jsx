@@ -9,6 +9,11 @@ function Search({onSearch}){
     const[showSuggestions,setShowSuggestions] = useState(false);
     const[activesuggestionIndex,setActivesuggestionIndex] = useState(-1);
 
+
+    useEffect(()=>{
+        
+    })
+
     const handleInputChange=(e)=>{
         setInputValue(e.target.value);
         showSuggestions(-1); // reset active suggestion
