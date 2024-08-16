@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
+import { FaGithub } from 'react-icons/fa'; 
 
 function Header(){
     const{theme,toggleTheme} = useContext(ThemeContext);
@@ -12,8 +13,10 @@ function Header(){
                 className={`px-4 py-2 rounded ${theme === 'light' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
             >
                 {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-                
+
             </button>
         </header>
-    )
+    );
 }
+
+export default Header;
