@@ -69,6 +69,19 @@ function Search({onSearch}){
                 placeholder="Enter GitHub Username"
                 className={`w-full p-2 border rounded-md focus:outline-none ${theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-800 text-white border-gray-700'}`}
             />
+            {showSuggestions && suggestions.length > 0 && (
+                <ul className={`absolute z-10 w-full max-h-60 overflow-y-auto rounded-md shadow-lg ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
+                    {suggestions.map((user, index) => (
+                        <li
+                            key={user.id}
+                            className={`p-2 cursor-pointer ${theme === 'light' ? 'hover:bg-gray-200' : 'hover:bg-gray-700'} ${activeSuggestionIndex === index ? 'bg-blue-500 text-white' : ''}`}
+                            onClick={() => handleSuggestionClick(user.login)}
+                        >
+                            {user.login}
+                        </li>
+                    ))}
+                </ul>
+            )}
 
         </div>
     )
