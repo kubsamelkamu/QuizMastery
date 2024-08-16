@@ -61,6 +61,14 @@ function Search({onSearch}){
 
     return(
         <div className='relative'>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown} 
+                placeholder="Enter GitHub Username"
+                className={`w-full p-2 border rounded-md focus:outline-none ${theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-800 text-white border-gray-700'}`}
+            />
 
         </div>
     )
