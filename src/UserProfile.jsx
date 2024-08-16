@@ -17,8 +17,14 @@ function Profile({user}){
                         <p className="text-gray-600 dark:text-gray-300">@{user.login}</p>
                         {user.bio && <p className="mt-2">{user.bio}</p>}
                     </div>
+                    <div className="mt-4">
+                    <p><strong>Location:</strong> {user.location || 'Not available'}</p>
+                    <p><strong>Repositories:</strong> {user.public_repos}</p>
+                    <p><strong>Followers:</strong> {user.followers}</p>
+                    <p><strong>Following:</strong> {user.following}</p>
+                </div>
             </div>
         </div>
-        
+
     )
 }
