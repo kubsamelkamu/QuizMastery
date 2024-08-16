@@ -20,7 +20,10 @@ function Search({onSearch}){
                 } catch (error) {
                     console.error('Error Fetching Github User Suggestion:' + error);
                 }
-            }
+            };
+
+            const debounceTime = setTimeout(fetchSuggestions,300)
+            return ()=>clearTimeout(debounceTime);
         }
 
     })
