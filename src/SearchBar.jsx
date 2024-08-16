@@ -1,47 +1,46 @@
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { useContext,useState,useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 
-function Search({onSearch}){
-    const{theme} = useContext(ThemeContext);
-    const[inputValue,setInputValue] = useState('');
-    const[suggestions,setSuggestions] = useState([]);
-    const[showSuggestions,setShowSuggestions] = useState(false);
-    const[activeSuggestionIndex,setActiveSuggestionIndex] = useState(-1);
+function Search({ onSearch }) {
+    const { theme } = useContext(ThemeContext);
+    const [inputValue, setInputValue] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1); // New state for tracking the active suggestion
 
-
-    useEffect(()=>{
+    useEffect(() => {
         if (inputValue.length > 0) {
-            const fetchSuggestions = async()=>{
+            const fetchSuggestions = async () => {
                 try {
                     const response = await axios.get(`https://api.github.com/search/users?q=${inputValue}`);
-                    setShowSuggestions(response.data.items);
+                    setSuggestions(response.data.items);
                     setShowSuggestions(true);
                 } catch (error) {
-                    console.error('Error Fetching Github User Suggestion:' + error);
+                    console.error('Error fetching GitHub user suggestions:', error);
                 }
             };
+            // Debounce the API request
+            const debounceTimeout = setTimeout(fetchSuggestions, 300);
 
-            const debounceTime = setTimeout(fetchSuggestions,300)
-            return ()=>clearTimeout(debounceTime);
-        }else{
+            return () => clearTimeout(debounceTimeout);
+        } else {
             setSuggestions([]);
             setShowSuggestions(false);
         }
+    }, [inputValue]);
 
-    },[inputValue])
-
-    const handleInputChange=(e)=>{
+    const handleInputChange = (e) => {
         setInputValue(e.target.value);
-        showSuggestions(-1); // reset active suggestion
-    }
+        setActiveSuggestionIndex(-1); // Reset active suggestion when input changes
+    };
 
-    const handleSuggestionClick=(username)=>{
+    const handleSuggestionClick = (username) => {
         setInputValue(username);
         setShowSuggestions(false);
         onSearch(username);
-    }
+    };
 
     const handleKeyDown = (e) => {
         if (e.key === 'ArrowDown') {
@@ -59,8 +58,8 @@ function Search({onSearch}){
         }
     };
 
-    return(
-        <div className='relative'>
+    return (
+        <div className="relative">
             <input
                 type="text"
                 value={inputValue}
@@ -82,13 +81,15 @@ function Search({onSearch}){
                     ))}
                 </ul>
             )}
-
         </div>
     );
-}
+};
+
+
+
 
 Search.propTypes ={
-    onSearch: PropTypes.func.isRequired,
+    onSearch: PropTypes.string.isRequired,
 }
 
 export default Search
