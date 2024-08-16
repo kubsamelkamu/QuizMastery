@@ -47,3 +47,5 @@ Profile.propTypes = {
         html_url: PropTypes.string.isRequired,
     }).isRequired,
 };
+
+export default Profile
