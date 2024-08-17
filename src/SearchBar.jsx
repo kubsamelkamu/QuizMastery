@@ -22,6 +22,7 @@ function Search({ onSearch }) {
                    
                 } catch (error) {
                     console.error('Error fetching GitHub user suggestions:', error);
+                    setSuggestions([]);
                 }
             };
             const debounceTimeout = setTimeout(fetchSuggestions, 300);
