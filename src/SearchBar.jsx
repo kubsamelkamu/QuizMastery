@@ -66,6 +66,10 @@ function Search({ onSearch }) {
             if (activeSuggestionIndex >= 0) {
                 handleSuggestionClick(suggestions[activeSuggestionIndex].login);
             }
+        }else if(e.key === 'Escape'){
+            setSuggestions([]);
+            setShowSuggestions(false);
+            e.target.blur();
         }
     };
 
