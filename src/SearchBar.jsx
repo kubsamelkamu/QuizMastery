@@ -69,10 +69,11 @@ function Search({ onSearch }) {
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown} 
                 placeholder="Enter GitHub Username"
+                aria-label="GitHub Username Search"
                 className={`w-full p-2 border rounded-md focus:outline-none ${theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-800 text-white border-gray-700'}`}
             />
             {showSuggestions && (
-                <ul className={`absolute z-10 w-full max-h-60 overflow-y-auto rounded-md shadow-lg ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
+                <ul className={`aria-label="GitHub Username Suggestions" absolute z-10 w-full max-h-60 overflow-y-auto rounded-md shadow-lg ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
                     {noResults ? (
                         <li className="p-2 text-center text-gray-500">No users found</li> // Display no results message
                     ) : (
