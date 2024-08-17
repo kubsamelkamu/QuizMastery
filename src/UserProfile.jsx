@@ -1,6 +1,7 @@
 import { ThemeContext } from "./ThemeContext";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import PropTypes from 'prop-types';
+
 import RepositoryList from "./RepoList";
 
 function Profile({ user, loading, error }) {
