@@ -81,6 +81,15 @@ function Search({ onSearch }) {
                 aria-label="GitHub Username Search"
                 className={`w-full p-2 border rounded-md focus:outline-none ${theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-800 text-white border-gray-700'}`}
             />
+            {loading && (
+                <div className={`absolute z-10 w-full text-center ${theme === 'light' ? 'bg-white' : 'bg-gray-800'} p-4`}>
+                    <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 border-t-transparent border-gray-600 rounded-full" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )}
+
+
             {showSuggestions && suggestions.length === 0 && (
                 <p className={`absolute z-10 w-full text-center text-red-500 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}>
                     No users found
