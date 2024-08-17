@@ -67,8 +67,8 @@ Profile.propTypes = {
         following: PropTypes.number.isRequired,
         html_url: PropTypes.string.isRequired,
     }),
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
 };
 
 export default Profile;
