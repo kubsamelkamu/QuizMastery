@@ -24,7 +24,8 @@ function Profile({ user}) {
                 setIsLoading(false);
             }
         }
-    })
+        fetch_repos();
+    },)
 
     if (loading) {
         return (
