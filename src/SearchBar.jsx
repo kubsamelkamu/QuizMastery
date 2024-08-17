@@ -9,7 +9,7 @@ function Search({ onSearch }) {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
-
+    const[loading,isLoading] = useState(false);
 
     useEffect(() => {
         if (inputValue.length > 0) {
