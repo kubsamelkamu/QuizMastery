@@ -74,6 +74,11 @@ function Profile({ user}) {
                 <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-500">
                     View GitHub Profile
                 </a>
+                {loading?(
+                    <div className="text-center mt-4">Loading repositories...</div>
+                ):(
+                    <RepositoryList repos={repos} />
+                )}
             </div>
         </div>
     );
