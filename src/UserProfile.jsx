@@ -10,6 +10,7 @@ function Profile({ user}) {
     const { theme } = useContext(ThemeContext);
     const[repos,setRepos] = useState([]);
     const[loading,setIsLoading] = useState(true);
+    const[error,setError] = useState(false);
 
     useEffect(()=>{
         const fetch_repos = async()=>{
