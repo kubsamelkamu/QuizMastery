@@ -1,54 +1,31 @@
 import { ThemeContext } from "./ThemeContext";
-import { useContext,useEffect,useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types';
-import axios from "axios";
 
 import RepositoryList from "./RepoList";
 
 
 function Profile({ user}) {
     const { theme } = useContext(ThemeContext);
-    const[repos,setRepos] = useState([]);
-    const[loading,setIsLoading] = useState(true);
-    const[error,setError] = useState(false);
+    const [repos, setRepos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
-        const fetch_repos = async()=>{
+    useEffect(() => {
+        const fetchRepos = async () => {
             try {
-                const response = await axios(`https://api.github.com/users/${user.login}/repos`);
+                const response = await fetch(`https://api.github.com/users/${user.login}/repos`);
                 const data = await response.json();
                 setRepos(data);
             } catch (error) {
-                console.error('Error occured while Fetching repositories:' + error.message);
+                console.error('Error fetching repositories:', error);
                 setRepos([]);
-                setError(true);
-            }finally{
-                setIsLoading(false);
+            } finally {
+                setLoading(false);
             }
-        }
-        fetch_repos();
-    },[user.login])
+        };
 
-    if (loading) {
-        return (
-            <div className="flex justify-center p-4">
-                <div className="text-center">
-                    <div className={`spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full ${theme === 'light' ? 'border-black' : 'border-white'}`} role="status"></div>
-                    <p>Loading...</p>
-                </div>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="flex justify-center p-4">
-                <div className={`text-center ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-                    <p>User not found.</p>
-                </div>
-            </div>
-        );
-    }
+        fetchRepos();
+    }, [user.login]);
 
     if (!user) {
         return null;
@@ -74,9 +51,9 @@ function Profile({ user}) {
                 <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-blue-500">
                     View GitHub Profile
                 </a>
-                {loading?(
+                {loading ? (
                     <div className="text-center mt-4">Loading repositories...</div>
-                ):(
+                ) : (
                     <RepositoryList repos={repos} />
                 )}
             </div>
@@ -95,9 +72,7 @@ Profile.propTypes = {
         followers: PropTypes.number.isRequired,
         following: PropTypes.number.isRequired,
         html_url: PropTypes.string.isRequired,
-    }),
-    loading: PropTypes.bool,
-    error: PropTypes.bool,
+    }).isRequired,
 };
 
 export default Profile;
