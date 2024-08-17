@@ -1,13 +1,27 @@
 import { ThemeContext } from "./ThemeContext";
-import { useContext,useState } from "react";
+import { useContext,useEffect,useState } from "react";
 import PropTypes from 'prop-types';
+import axios from "axios";
 
 import RepositoryList from "./RepoList";
 
-function Profile({ user, loading, error }) {
+
+function Profile({ user}) {
     const { theme } = useContext(ThemeContext);
     const[repos,setRepos] = useState([]);
     const[loading,setIsLoading] = useState(true);
+
+    useEffect(()=>{
+        const fetch_repos = async()=>{
+            try {
+                const response = await axios(`https://api.github.com/users/${user.login}/repos`);
+                const data = await response.json();
+                setRepos(data);
+            } catch (error) {
+                
+            }
+        }
+    })
 
     if (loading) {
         return (
