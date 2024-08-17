@@ -18,6 +18,8 @@ function Profile({ user}) {
                 const data = await response.json();
                 setRepos(data);
             } catch (error) {
+                console.error('Error occured while Fetching repositories:' + error.message);
+                setRepos([]);
                 
             }
         }
