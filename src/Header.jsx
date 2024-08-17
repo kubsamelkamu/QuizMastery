@@ -14,7 +14,8 @@ function Header(){
             </div>
             <button 
                 onClick={toggleTheme}
-                className={`px-4 py-2 rounded ${theme === 'light' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
+                className={`px-4 py-2 rounded aria-label={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+                ${theme === 'light' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
             >
                 {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
             </button>
