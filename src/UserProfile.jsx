@@ -1,9 +1,30 @@
 import { ThemeContext } from "./ThemeContext";
 import { useContext } from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-function Profile({user}){
-    const{theme} =useContext(ThemeContext)
+function Profile({ user, loading, error }) {
+    const { theme } = useContext(ThemeContext);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center p-4">
+                <div className="text-center">
+                    <div className={`spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full ${theme === 'light' ? 'border-black' : 'border-white'}`} role="status"></div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex justify-center p-4">
+                <div className={`text-center ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                    <p>User not found.</p>
+                </div>
+            </div>
+        );
+    }
 
     if (!user) {
         return null;
@@ -45,7 +66,9 @@ Profile.propTypes = {
         followers: PropTypes.number.isRequired,
         following: PropTypes.number.isRequired,
         html_url: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
 };
 
-export default Profile
+export default Profile;
