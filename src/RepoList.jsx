@@ -1,5 +1,7 @@
 import { ThemeContext } from "./ThemeContext";
 import { useContext } from "react";
+import PropTypes from 'prop-types';
+
 function RepositoryList({repos}) {
     const theme = useContext(ThemeContext);
 
@@ -24,5 +26,20 @@ function RepositoryList({repos}) {
                 </div>
             ))}
         </div>
-    )
+    );
 }
+
+RepositoryList.propTypes = {
+    repos: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string,
+            stargazers_count: PropTypes.number.isRequired,
+            forks_count: PropTypes.number.isRequired,
+            created_at: PropTypes.string.isRequired,
+            html_url: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};
+
