@@ -21,6 +21,7 @@ function Profile({ user}) {
             } catch (error) {
                 console.error('Error occured while Fetching repositories:' + error.message);
                 setRepos([]);
+                setError(true);
             }finally{
                 setIsLoading(false);
             }
