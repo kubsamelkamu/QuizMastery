@@ -43,3 +43,5 @@ RepositoryList.propTypes = {
     ).isRequired,
 };
 
+export default RepositoryList;
+
