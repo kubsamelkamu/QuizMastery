@@ -9,44 +9,43 @@ function Search({ onSearch }) {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
-    const[loading,setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false); 
 
     useEffect(() => {
         if (inputValue.length > 0) {
             const fetchSuggestions = async () => {
+                setLoading(true); // Set loading to true when starting to fetch data
                 try {
                     const response = await axios.get(`https://api.github.com/search/users?q=${inputValue}`);
-                    const users = response.data.items;
-                    setSuggestions(users);
+                    setSuggestions(response.data.items);
                     setShowSuggestions(true);
-                   
                 } catch (error) {
                     console.error('Error fetching GitHub user suggestions:', error);
                     setSuggestions([]);
                     setShowSuggestions(true);
-                }finally {
-                    setIsLoading(true);
+                } finally {
+                    setLoading(false); 
                 }
             };
+
+            // Debounce the API request
             const debounceTimeout = setTimeout(fetchSuggestions, 300);
 
             return () => clearTimeout(debounceTimeout);
         } else {
             setSuggestions([]);
             setShowSuggestions(false);
-       
         }
     }, [inputValue]);
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
-        setActiveSuggestionIndex(-1); // Reset active suggestion when input changes
+        setActiveSuggestionIndex(-1);
         if (e.target.value === '') {
             setSuggestions([]);
             setShowSuggestions(false);
         }
     };
-    
 
     const handleSuggestionClick = (username) => {
         setInputValue(username);
@@ -88,14 +87,12 @@ function Search({ onSearch }) {
                     </div>
                 </div>
             )}
-
-
-            {showSuggestions && suggestions.length === 0  && !loading (
+            {showSuggestions && suggestions.length === 0 && !loading && (
                 <p className={`absolute z-10 w-full text-center text-red-500 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}>
                     No users found
                 </p>
             )}
-            {showSuggestions && suggestions.length > 0 &&!loading &&  (
+            {showSuggestions && suggestions.length > 0 && !loading && (
                 <ul className={`absolute z-10 w-full max-h-60 overflow-y-auto rounded-md shadow-lg ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
                     {suggestions.map((user, index) => (
                         <li
@@ -110,7 +107,7 @@ function Search({ onSearch }) {
             )}
         </div>
     );
-};
+}
 
 Search.propTypes = {
     onSearch: PropTypes.func.isRequired,
