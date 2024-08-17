@@ -9,7 +9,20 @@ function RepositoryList({repos}) {
 
     return(
         <div className="space-y-4 mt-4">
-
+             {repos.map((repo) => (
+                <div key={repo.id} className={`p-4 rounded-lg shadow-md ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}>
+                    <h3 className="text-xl font-semibold">{repo.name}</h3>
+                    <p className="mt-1">{repo.description || 'No description available.'}</p>
+                    <div className="mt-2 flex space-x-4 text-sm">
+                        <span>⭐ {repo.stargazers_count}</span>
+                        <span>🍴 {repo.forks_count}</span>
+                        <span>📅 {new Date(repo.created_at).toLocaleDateString()}</span>
+                    </div>
+                    <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="mt-2 text-blue-500">
+                        View Repository
+                    </a>
+                </div>
+            ))}
         </div>
     )
 }
