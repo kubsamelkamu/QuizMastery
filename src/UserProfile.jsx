@@ -25,7 +25,7 @@ function Profile({ user}) {
             }
         }
         fetch_repos();
-    },)
+    },[user.login])
 
     if (loading) {
         return (
