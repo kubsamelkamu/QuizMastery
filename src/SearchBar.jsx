@@ -9,7 +9,7 @@ function Search({ onSearch }) {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
-    const[loading,isLoading] = useState(false);
+    const[loading,setIsLoading] = useState(false);
 
     useEffect(() => {
         if (inputValue.length > 0) {
@@ -24,6 +24,8 @@ function Search({ onSearch }) {
                     console.error('Error fetching GitHub user suggestions:', error);
                     setSuggestions([]);
                     setShowSuggestions(true);
+                }finally {
+                    setIsLoading(true);
                 }
             };
             const debounceTimeout = setTimeout(fetchSuggestions, 300);
