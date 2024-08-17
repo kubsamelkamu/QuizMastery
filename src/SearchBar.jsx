@@ -95,7 +95,7 @@ function Search({ onSearch }) {
                     No users found
                 </p>
             )}
-            {showSuggestions && suggestions.length > 0 && (
+            {showSuggestions && suggestions.length > 0 &&!loading &&  (
                 <ul className={`absolute z-10 w-full max-h-60 overflow-y-auto rounded-md shadow-lg ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
                     {suggestions.map((user, index) => (
                         <li
