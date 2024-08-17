@@ -6,6 +6,7 @@ import RepositoryList from "./RepoList";
 
 function Profile({ user, loading, error }) {
     const { theme } = useContext(ThemeContext);
+    const[repos,setRepos] = useState([]);
 
     if (loading) {
         return (
