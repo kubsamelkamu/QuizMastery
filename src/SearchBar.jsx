@@ -90,7 +90,7 @@ function Search({ onSearch }) {
             )}
 
 
-            {showSuggestions && suggestions.length === 0 && (
+            {showSuggestions && suggestions.length === 0  && !loading (
                 <p className={`absolute z-10 w-full text-center text-red-500 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}>
                     No users found
                 </p>
