@@ -20,7 +20,7 @@ function TrendsSection(){
 export function FeaturedReposSection(){
     const{theme} = useContext(ThemeContext);
     return (
-        <div className={`p-4 mt-4 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'} rounded-t-lg shadow-md`}>
+        <div className={`p-4 mt-9 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'} rounded-t-lg shadow-md`}>
             <h2 className="text-xl font-semibold mb-4">Featured GitHub Repositories</h2>
             <p>Check out these popular and featured repositories</p>
             <ul className="list-disc ml-5 mt-2">
