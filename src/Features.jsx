@@ -17,6 +17,20 @@ function TrendsSection(){
 };
 
 
+export function FeaturedReposSection(){
+    const{theme} = useContext(ThemeContext);
+    return (
+        <div className={`p-4 mt-4 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'} rounded-t-lg shadow-md`}>
+            <h2 className="text-xl font-semibold mb-4">Featured GitHub Repositories</h2>
+            <p>Check out these popular and featured repositories</p>
+            <ul className="list-disc ml-5 mt-2">
+                <li><a href="https://github.com/facebook/react" target="_blank" rel="noopener noreferrer" className="text-blue-500">React - A JavaScript library for building user interfaces</a></li>
+                <li><a href="https://github.com/twbs/bootstrap" target="_blank" rel="noopener noreferrer" className="text-blue-500">Bootstrap - The most popular HTML, CSS, and JS library</a></li>
+                <li><a href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener noreferrer" className="text-blue-500"> FreeCode Camp , Offers Free coding tutorials</a></li>
+            </ul>
+        </div>
+    );
+}
 
 export default TrendsSection;
 
