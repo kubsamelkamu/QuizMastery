@@ -1,31 +1,48 @@
-import { useContext } from 'react';
+import { useContext ,useState} from 'react';
 import { ThemeContext } from './ThemeContext';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
-function Footer(){
-    const{theme} = useContext(ThemeContext);
+export const  FeedbackSection = () => {
+    const { theme } = useContext(ThemeContext);
+    const [feedback, setFeedback] = useState('');
+    const [message, setMessage] = useState('');
 
-    return(
-        <footer className={`p-4 ${theme === 'light' ? 'bg-gray-200 text-gray-800' : 'bg-gray-800 text-gray-200'}`}>
-            <div className="container mx-auto flex flex-col items-center justify-between sm:flex-row">
-                <div className="mb-4 sm:mb-0">
-                    <p className="text-sm">© 2024 Github user search. All rights reserved.</p>
-                </div>
-                <div className="flex space-x-4">
-                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <FaGithub className="text-2xl hover:text-blue-500 transition-colors duration-200" />
-                    </a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <FaLinkedin className="text-2xl hover:text-blue-500 transition-colors duration-200" />
-                    </a>
-                    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                        <FaInstagram className="text-2xl hover:text-blue-500 transition-colors duration-200" />
-                    </a>
-                </div>
-            </div>
-        </footer>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (feedback.trim() === '') {
+            setMessage('Please provide your feedback before submitting.');
+            return;
+        }
+        // Simulate feedback submission (you can replace this with an actual API call)
+        setMessage('Thank you for your feedback!');
+        setFeedback(''); // Clear the textarea
+    };
+
+    return (
+        <div className={`p-4 mt-8 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'} rounded-t-lg`}>
+            <h2 className="text-xl font-semibold mb-4">We Value Your Feedback</h2>
+            <p>Tell us what you think about the application. Your feedback helps us improve!</p>
+            <form className={`mt-4 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`} onSubmit={handleSubmit}>
+                <textarea
+                    rows="4"
+                    placeholder="Your feedback..."
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
+                    className={`w-full p-2 border rounded-md ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`}
+                />
+                <button type="submit" className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">Submit Feedback</button>
+            </form>
+            {message && <p className="mt-4 text-sm text-green-500">{message}</p>} {/* Display feedback message */}
+        </div>
     );
-}
+};
 
-export default Footer
+
+
+
+
+
+
+
+
 
