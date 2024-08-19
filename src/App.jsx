@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Header from './Header';
+import SearchBar from './SearchBar';
+import UserProfile from './UserProfile';
+import Footer from './Footer';
+import { ThemeProvider } from './ThemeContext';
+import axios from 'axios';
+import TrendsSection from './Features';
+import { FeaturedReposSection } from './Features';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [userData, setUserData] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(''); 
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+    const handleSearch = async (username) => {
+      
+        try {
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+            if (response.data) {
+                setUserData(response.data);
+                setErrorMessage(''); 
+            } else {
+                setUserData(null);
+                setErrorMessage('No users found');
+            }
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            setUserData(null);
+            setErrorMessage('No users found'); 
+        }
+    };
+
+    return (
+        <ThemeProvider>
+            <div className="min-h-screen flex flex-col">
+                <Header />
+                <main className="flex-grow container mx-auto p-4">
+                    <div className="container mx-auto p-4">
+                        <SearchBar onSearch={handleSearch} />
+                        {errorMessage && <p className="text-center text-red-500">{errorMessage}</p>}
+                        {!userData && <TrendsSection />  } 
+                        {!userData && <FeaturedReposSection/>}
+                        {userData && <UserProfile user={userData} />}
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        </ThemeProvider>
+    );
 }
 
-export default App
+export default App;
