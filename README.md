@@ -10,7 +10,7 @@
 6. [Technologies Used](#technologies-used)
 7. [Contributing](#contributing)
 8. [Feedback](#feedback)
-9. [License](#license)
+
 
 ## Project Overview
 
@@ -27,7 +27,7 @@
 
 ## Demo
 
-Check out the live demo: [GitHub User Search Demo](https://gith-user-search.netlify.app/)
+Check out the live demo: [GitHub User Search ](https://gith-user-search.netlify.app/)
 
 ## Installation
 
@@ -74,4 +74,4 @@ To run this project locally, follow these steps:
 
 ## Contributing
 
-Contributions are welcome and appreciated!
+Your Contributions are welcome and appreciated!
