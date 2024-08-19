@@ -13,9 +13,9 @@ export const  FeedbackSection = () => {
             setMessage('Please provide your feedback before submitting.');
             return;
         }
-        // Simulate feedback submission (you can replace this with an actual API call)
+        
         setMessage('Thank you for your feedback!');
-        setFeedback(''); // Clear the textarea
+        setFeedback(''); 
     };
 
     return (
@@ -52,10 +52,10 @@ const Footer = () => {
                         <a href="https://github.com/kubsamelkamu" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
                             <FaGithub size={24} />
                         </a>
-                        <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                        <a href="https://instagram.com/kubsa58" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
                             <FaInstagram size={24} />
                         </a>
-                        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                        <a href="https://linkedin.com/in/kubsa-melkamu-519bb5263" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
                             <FaLinkedin size={24} />
                         </a>
                     </div>
