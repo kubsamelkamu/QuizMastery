@@ -25,4 +25,23 @@ function CategoriesSelection({onCategorySelection}) {
             setSelectedCategories(selected);
             onCategorySelection(selected); 
     };
+
+    return (
+        <div className="mt-4">
+            <label htmlFor="categories" className="block mb-2 text-lg font-semibold">Select Category</label>
+            <select
+                id="categories"
+                value={selectedCategories}
+                onChange={handleCategoryChange}
+                className="p-2 border border-gray-300 rounded-md"
+            >
+                <option value="">Choose a category</option>
+                {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                        {category.name}
+                    </option>
+                ))}
+            </select>
+        </div>
+    );
 }
