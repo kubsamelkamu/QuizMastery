@@ -18,4 +18,11 @@ function CategoriesSelection({onCategorySelection}) {
     useEffect(()=>{
         fetchcategories();
     },[]);
+
+       
+       const handleCategoryChange = (event) => {
+            const selected = event.target.value;
+            setSelectedCategories(selected);
+            onCategorySelection(selected); 
+    };
 }
