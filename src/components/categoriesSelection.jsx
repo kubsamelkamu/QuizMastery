@@ -45,3 +45,7 @@ function CategoriesSelection({onCategorySelection}) {
         </div>
     );
 }
+
+CategoriesSelection.propTypes = {
+    onCategorySelect: PropTypes.func.isRequired, 
+};
