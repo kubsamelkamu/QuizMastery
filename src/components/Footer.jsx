@@ -47,13 +47,13 @@ function Footer(){
                 <div className="mt-8">
                     <h2 className="text-xl font-semibold mb-4">Follow Us</h2>
                     <div className="flex justify-center space-x-4">
-                        <a href="https://github.com/kubsamelkamu" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                        <a href="https://github.com/kubsamelkamu" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white" aria-label='GitHub'>
                             <FaGithub size={24} />
                         </a>
-                        <a href="https://instagram.com/kubsa58" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                        <a href="https://instagram.com/kubsa58" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white" aria-label='Instagram'>
                             <FaInstagram size={24} />
                         </a>
-                        <a href="https://linkedin.com/in/kubsa-melkamu-519bb5263" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                        <a href="https://linkedin.com/in/kubsa-melkamu-519bb5263" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white" aria-label='LinkedIn'>
                             <FaLinkedin size={24} />
                         </a>
                     </div>
