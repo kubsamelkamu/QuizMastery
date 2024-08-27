@@ -1,5 +1,5 @@
 import { useContext ,useState} from 'react';
-import { ThemeContext } from './context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 export const  FeedbackSection = () => {
@@ -36,8 +36,6 @@ export const  FeedbackSection = () => {
         </div>
     );
 };
-
-
 
 function Footer(){
     const { theme } = useContext(ThemeContext);
