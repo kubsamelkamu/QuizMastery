@@ -1,6 +1,6 @@
 import { useContext ,useState} from 'react';
 import { ThemeContext } from './context/ThemeContext';
-//import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 export const  FeedbackSection = () => {
     const { theme } = useContext(ThemeContext);
@@ -36,6 +36,37 @@ export const  FeedbackSection = () => {
         </div>
     );
 };
+
+
+
+function Footer(){
+    const { theme } = useContext(ThemeContext);
+    return (
+        <footer className={`p-4 mt-8 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'} rounded-t-lg`}>
+            <div className="container mx-auto text-center">
+                <FeedbackSection/>
+                <p className="mb-2">&copy; {new Date().getFullYear()} Github User Search. All rights reserved.</p>
+                <div className="mt-8">
+                    <h2 className="text-xl font-semibold mb-4">Follow Us</h2>
+                    <div className="flex justify-center space-x-4">
+                        <a href="https://github.com/kubsamelkamu" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                            <FaGithub size={24} />
+                        </a>
+                        <a href="https://instagram.com/kubsa58" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                            <FaInstagram size={24} />
+                        </a>
+                        <a href="https://linkedin.com/in/kubsa-melkamu-519bb5263" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-white">
+                            <FaLinkedin size={24} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;
+
 
 
 
