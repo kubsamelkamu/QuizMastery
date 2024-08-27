@@ -47,7 +47,7 @@ function CategoriesSelection({onCategorySelection}) {
 }
 
 CategoriesSelection.propTypes = {
-    onCategorySelect: PropTypes.func.isRequired, 
+    onCategorySelection: PropTypes.func.isRequired, 
 };
 
 export default CategoriesSelection;
