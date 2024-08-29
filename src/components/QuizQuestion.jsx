@@ -14,23 +14,28 @@ function QuizQuestion(){
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (!category || !difficulty) {
+            navigate('/');
+            return;
+        }
+
         const fetchQuestions = async () => {
             try {
-                setLoading(true);
-                const response = await axios.get(
-                    `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
-                );
+                const response = await axios.get(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`);
                 setQuestions(response.data.results);
-                setLoading(false);
-            } catch (err) {
-                setError(err);
-                setError('Failed to fetch quiz questions. Please try again.');
+            } catch (error) {
+                console.error('Error fetching quiz questions:', error);
+                setError('Failed to fetch quiz questions. You will be redirected to the home page.',error);
+                setTimeout(() => {
+                    navigate('/', { state: { errorMessage: 'Failed to fetch quiz questions. Please try again.' } });
+                }, 2000); 
+            } finally {
                 setLoading(false);
             }
         };
 
         fetchQuestions();
-    }, [category, difficulty]);
+    }, [category, difficulty, navigate]);
 
     const handleAnswerSelect = (answer) => {
         setSelectedAnswer(answer);
