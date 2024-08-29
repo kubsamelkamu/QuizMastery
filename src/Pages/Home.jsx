@@ -28,14 +28,11 @@ function Home() {
         >
             <div className="text-center mb-12">
                 <h1 className="text-4xl font-extrabold mb-4">Welcome to QuizMastery!</h1>
-                <p className="text-lg mb-6">
-                    Select your preferred category and difficulty level, then start the quiz to test your knowledge!
-                </p>
+                <p className="text-lg mb-6">Select your preferred category and difficulty level, then start the quiz to test your knowledge!</p>
             </div>
 
-            <div className="max-w-md bg-white text-black p-8 rounded-lg shadow-lg">
+            <div className=" max-w-md bg-white text-black p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-6 text-center">Get Started</h2>
-                
                 <CategoriesSelection onCategorySelect={setCategory} />
                 {!category && (
                     <p className="text-red-500 text-sm mt-2">Please select a category</p>
