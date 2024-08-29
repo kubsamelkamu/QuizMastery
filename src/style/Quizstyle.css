@@ -1,0 +1,39 @@
+/* Fade-in and fade-out animations */
+.fade-in{
+    animation: fadeIn 0.5s forwards;
+}
+.fade-out{
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* Animations for answer buttons */
+.answer-button {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.answer-button.scale-110 {
+    transform: scale(1.1);
+}
