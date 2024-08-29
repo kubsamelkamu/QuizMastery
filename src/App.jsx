@@ -4,8 +4,7 @@ import Footer from './components/Footer';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
 import QuizQuestion from './components/QuizQuestion';
-//import Quiz from './pages/Quiz';
-//import Result from './pages/Result';
+import Result from './Pages/Result';
 
 function App() {
     return (
@@ -19,6 +18,8 @@ function App() {
                         path='/' element={<Home/>} />
                         <Route
                         path="/quiz"element={<QuizQuestion />}/>
+                       <Route 
+                       path="/result" element={<Result />} />/
                     </Routes>
                     </main>
                     <Footer />
