@@ -37,3 +37,18 @@
 .answer-button.scale-110 {
     transform: scale(1.1);
 }
+
+/* Progress Bar */
+.progress-bar-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 4px;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #38a169;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
