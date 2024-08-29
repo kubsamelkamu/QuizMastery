@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion'; 
 
 function Result() {
     const { state } = useLocation();
@@ -19,14 +20,33 @@ function Result() {
     }
 
     const { score, totalQuestions, questions, userAnswers } = state;
+    const percentageScore = (score / totalQuestions) * 100; 
     const performanceMessage = score / totalQuestions > 0.7 ? 'Great job!' : 'Keep practicing!';
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-blue-600 text-white p-6">
-            <div className="bg-white text-gray-900 rounded-lg shadow-lg p-8 max-w-lg w-full">
+          
+            <motion.div 
+                className="bg-white text-gray-900 rounded-lg shadow-lg p-8 max-w-lg w-full"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+            >
                 <h2 className="text-2xl font-bold mb-6 text-center">Quiz Result</h2>
                 <p className="text-lg mb-6 text-center">Your Score: {score} / {totalQuestions}</p>
                 <p className="text-lg mb-6 text-center font-semibold">{performanceMessage}</p>
+
+                <div className="mb-6">
+                    <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
+                        <motion.div 
+                            className="bg-green-500 h-4 rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${percentageScore}%` }}
+                            transition={{ duration: 1.5, ease: 'easeInOut' }}
+                        />
+                    </div>
+                    <p className="text-center font-semibold">{percentageScore.toFixed(2)}%</p>
+                </div>
 
                 <div className="mb-6">
                     {questions.map((question, index) => (
@@ -49,9 +69,8 @@ function Result() {
                     >
                         Retake Quiz
                     </button>
-                  
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }
