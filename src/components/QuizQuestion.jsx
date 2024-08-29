@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import axios from 'axios';
+import '../style/Quizstyle.css';
 
 function QuizQuestion(){
     const { state } = useLocation(); 
@@ -13,6 +14,7 @@ function QuizQuestion(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [timeLeft, setTimeLeft] = useState(10); 
+    const [transition, setTransition] = useState(false); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -40,12 +42,16 @@ function QuizQuestion(){
     }, [category, difficulty, navigate]);
 
     const handleNextQuestion = useCallback(() => {
-        setSelectedAnswer(null);
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            navigate('/result', { state: { score, totalQuestions: questions.length } });
-        }
+        setTransition(true); 
+        setTimeout(() => {
+            setSelectedAnswer(null);
+            if (currentQuestionIndex < questions.length - 1) {
+                setCurrentQuestionIndex(currentQuestionIndex + 1);
+            } else {
+                navigate('/result', { state: { score, totalQuestions: questions.length } });
+            }
+            setTransition(false); 
+        }, 500); 
     }, [currentQuestionIndex, questions.length, navigate, score]);
 
     useEffect(() => {
@@ -87,10 +93,11 @@ function QuizQuestion(){
     const currentQuestion = questions[currentQuestionIndex];
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 text-white p-6">
-            <div className="bg-white text-gray-900 rounded-lg shadow-lg p-8 max-w-lg w-full">
+        <div className={`quiz-container ${transition ? 'fade-out' : 'fade-in'} flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 text-white p-6`}>
+            <div className="bg-white text-gray-900 rounded-lg shadow-lg p-8 max-w-lg w-full transition-all duration-500">
                 <h2 className="text-2xl font-bold mb-6 text-center">Question {currentQuestionIndex + 1} of {questions.length}</h2>
                 <p className="text-lg mb-6 text-center">{currentQuestion.question}</p>
+                
                 <div className="text-center text-xl font-semibold mb-4">
                     Time Left: {timeLeft} seconds
                 </div>
@@ -103,11 +110,11 @@ function QuizQuestion(){
                                 key={index}
                                 onClick={() => handleAnswerSelect(answer)}
                                 disabled={selectedAnswer !== null}
-                                className={`py-3 px-6 rounded-md transition-colors duration-300 ${
+                                className={`answer-button py-3 px-6 rounded-md transition-all duration-300 ${
                                     selectedAnswer === answer
                                         ? answer === currentQuestion.correct_answer
-                                            ? 'bg-green-500 text-white'
-                                            : 'bg-red-500 text-white'
+                                            ? 'bg-green-500 text-white scale-110' // Correct answer animation
+                                            : 'bg-red-500 text-white scale-110'   // Incorrect answer animation
                                         : 'bg-blue-500 hover:bg-blue-600 text-white'
                                 }`}
                             >
