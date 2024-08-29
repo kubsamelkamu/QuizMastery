@@ -54,6 +54,7 @@ function QuizQuestion(){
         }, 500); 
     }, [currentQuestionIndex, questions.length, navigate, score]);
 
+
     useEffect(() => {
         if (selectedAnswer === null && timeLeft > 0) {
             const timer = setInterval(() => {
@@ -92,8 +93,16 @@ function QuizQuestion(){
 
     const currentQuestion = questions[currentQuestionIndex];
 
+
+    const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+
     return (
         <div className={`quiz-container ${transition ? 'fade-out' : 'fade-in'} flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 text-white p-6`}>
+            {/* Progress Bar */}
+            <div className="progress-bar-container w-full max-w-lg mb-6">
+                <div className="progress-bar bg-green-500 h-4 rounded-full" style={{ width: `${progressPercentage}%` }}></div>
+            </div>
+
             <div className="bg-white text-gray-900 rounded-lg shadow-lg p-8 max-w-lg w-full transition-all duration-500">
                 <h2 className="text-2xl font-bold mb-6 text-center">Question {currentQuestionIndex + 1} of {questions.length}</h2>
                 <p className="text-lg mb-6 text-center">{currentQuestion.question}</p>
