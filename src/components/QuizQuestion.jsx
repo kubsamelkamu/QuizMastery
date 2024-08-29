@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 import axios from 'axios';
 
 function QuizQuestion(){
@@ -54,7 +55,13 @@ function QuizQuestion(){
         }
     };
 
-    if (loading) return <div className="flex justify-center items-center h-screen text-2xl">Loading...</div>;
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <ClipLoader color="#4A90E2" size={80} />
+            </div>
+        );
+    }
     if (error) return <div className="text-center text-red-500">{error}</div>;
 
     const currentQuestion = questions[currentQuestionIndex];
