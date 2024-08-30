@@ -10,6 +10,7 @@ function QuizQuestion(){
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -45,14 +46,28 @@ function QuizQuestion(){
         setTransition(true); 
         setTimeout(() => {
             setSelectedAnswer(null);
+    
+            const updatedUserAnswers = [...userAnswers];
+            updatedUserAnswers[currentQuestionIndex] = selectedAnswer;
+            setUserAnswers(updatedUserAnswers);
+    
             if (currentQuestionIndex < questions.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
             } else {
-                navigate('/result', { state: { score, totalQuestions: questions.length } });
+                
+                navigate('/result', { 
+                    state: { 
+                        score, 
+                        totalQuestions: questions.length, 
+                        userAnswers: updatedUserAnswers, 
+                        questions 
+                    } 
+                });
             }
             setTransition(false); 
         }, 500); 
-    }, [currentQuestionIndex, questions.length, navigate, score]);
+    }, [userAnswers, currentQuestionIndex, selectedAnswer, questions, navigate, score]);
+    
 
 
     useEffect(() => {

@@ -32,7 +32,7 @@ export const  FeedbackSection = () => {
                 />
                 <button type="submit" className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">Submit Feedback</button>
             </form>
-            {message && <p className="mt-4 text-sm text-green-500">{message}</p>} {/* Display feedback message */}
+            {message && <p className="mt-4 text-sm text-green-500">{message}</p>} 
         </div>
     );
 };
@@ -43,7 +43,7 @@ function Footer(){
         <footer className={`p-4 mt-8 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'} rounded-t-lg`}>
             <div className="container mx-auto text-center">
                 <FeedbackSection/>
-                <p className="mb-2">&copy; {new Date().getFullYear()} Github User Search. All rights reserved.</p>
+                <p className="mb-2">&copy; {new Date().getFullYear()} QuizMastery. All rights reserved.</p>
                 <div className="mt-8">
                     <h2 className="text-xl font-semibold mb-4">Follow Us</h2>
                     <div className="flex justify-center space-x-4">
