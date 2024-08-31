@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { auth } from '../firebase';
-import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -17,7 +17,6 @@ function Register() {
     setLoading(true);
     setError(null);
 
-    // Basic email validation 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address.');
@@ -33,6 +32,12 @@ function Register() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Save username to the user's profile
+      await updateProfile(userCredential.user, {
+        displayName: username,
+      });
+
       await sendEmailVerification(userCredential.user);
       setSuccess('Registration successful! Please check your email to verify your account.');
       
