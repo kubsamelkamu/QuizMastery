@@ -20,7 +20,7 @@ function QuizQuestion(){
 
     useEffect(() => {
         if (!category || !difficulty) {
-            navigate('/');
+            navigate('/home');
             return;
         }
 
@@ -30,9 +30,9 @@ function QuizQuestion(){
                 setQuestions(response.data.results);
             } catch (error) {
                 console.error('Error fetching quiz questions:', error);
-                setError('Failed to fetch quiz questions. You will be redirected to the home page.');
+                setError('Failed to Load quiz questions. You will be redirected to the home page. Please try again');
                 setTimeout(() => {
-                    navigate('/', { state: { errorMessage: 'Failed to fetch quiz questions. Please try again.' } });
+                    navigate('/home', { state: { errorMessage: 'Failed to Load quiz questions. Please try again.' } });
                 }, 2000); 
             } finally {
                 setLoading(false);
