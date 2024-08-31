@@ -22,8 +22,15 @@ function Login(){
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/quiz');
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+  
+      if (!user.emailVerified) {
+        setError('Please verify your email address before signing in.');
+        await auth.signOut();  
+      } else {
+        navigate('/quiz');
+      }
     } catch (err) {
       const errorCode = err.code;
       switch (errorCode) {
@@ -44,6 +51,7 @@ function Login(){
       setLoading(false);
     }
   };
+  
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
