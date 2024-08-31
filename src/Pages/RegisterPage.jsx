@@ -15,27 +15,44 @@ function Register() {
     setLoading(true);
     setError(null);
 
-    if (!email || !password) {
-      setError('Email and Password are required');
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.');
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password should be at least 6 characters.');
       setLoading(false);
       return;
     }
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Send email verification
       await sendEmailVerification(userCredential.user);
+
+      // Redirect to login page
       navigate('/login');
     } catch (err) {
+      console.error('Firebase error:', err);
       const errorCode = err.code;
+
+      // Display user-friendly error messages
       switch (errorCode) {
         case 'auth/email-already-in-use':
-          setError('Email is already in use.');
+          setError('This email address is already in use.');
           break;
         case 'auth/invalid-email':
-          setError('Invalid email address.');
+          setError('The email address is not valid.');
+          break;
+        case 'auth/operation-not-allowed':
+          setError('Operation not allowed. Please contact support.');
           break;
         case 'auth/weak-password':
-          setError('Password should be at least 6 characters.');
+          setError('The password is too weak. It should be at least 6 characters.');
           break;
         default:
           setError('Sign up failed. Please try again.');
