@@ -8,6 +8,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -31,28 +32,21 @@ function Register() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Send email verification
       await sendEmailVerification(userCredential.user);
-
-      // Redirect to login page
-      navigate('/login');
+      setSuccess('Registration successful! Please check your email to verify your account.');
+      
+      setTimeout(() => navigate('/login'), 5000); 
     } catch (err) {
-      console.error('Firebase error:', err);
       const errorCode = err.code;
-
-      // Display user-friendly error messages
       switch (errorCode) {
         case 'auth/email-already-in-use':
-          setError('This email address is already in use.');
+          setError('Email is already in use.');
           break;
         case 'auth/invalid-email':
-          setError('The email address is not valid.');
-          break;
-        case 'auth/operation-not-allowed':
-          setError('Operation not allowed. Please contact support.');
+          setError('Invalid email address.');
           break;
         case 'auth/weak-password':
-          setError('The password is too weak. It should be at least 6 characters.');
+          setError('Password should be at least 6 characters.');
           break;
         default:
           setError('Sign up failed. Please try again.');
@@ -94,6 +88,7 @@ function Register() {
             {loading ? 'Signing Up...' : 'Sign Up'}
           </button>
           {error && <p className="mt-4 text-red-600">{error}</p>}
+          {success && <p className="mt-4 text-green-600">{success}</p>} 
         </form>
       </div>
     </div>
