@@ -64,7 +64,7 @@ function Result() {
 
                 <div className="flex justify-between">
                     <button
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/home')}
                         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
                     >
                         Retake Quiz
