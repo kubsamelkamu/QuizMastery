@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const [username, setUsername] = useState('');  // New state for username
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -62,6 +63,15 @@ function Register() {
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
         <form onSubmit={handleSignUp}>
+          <label className="block mb-2 text-sm font-bold">Username</label>
+          <input
+            type="text"
+            className="border p-2 rounded w-full mb-4"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
           <label className="block mb-2 text-sm font-bold">Email</label>
           <input
             type="email"
@@ -88,8 +98,11 @@ function Register() {
             {loading ? 'Signing Up...' : 'Sign Up'}
           </button>
           {error && <p className="mt-4 text-red-600">{error}</p>}
-          {success && <p className="mt-4 text-green-600">{success}</p>} 
+          {success && <p className="mt-4 text-green-600">{success}</p>}
         </form>
+        <div className="mt-4 text-center">
+          <p>Already have an account? <a href="/login" className="text-blue-500">Login here</a></p>
+        </div>
       </div>
     </div>
   );
