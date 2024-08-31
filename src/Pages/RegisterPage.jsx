@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
-  const [username, setUsername] = useState('');  // New state for username
+  const [username, setUsername] = useState('');  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ function Register() {
     setLoading(true);
     setError(null);
 
-    // Basic email validation
+    // Basic email validation 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address.');
@@ -101,7 +101,7 @@ function Register() {
           {success && <p className="mt-4 text-green-600">{success}</p>}
         </form>
         <div className="mt-4 text-center">
-          <p>Already have an account? <a href="/login" className="text-blue-500">Login here</a></p>
+          <p>Already have an account? <a href="/login" className="text-blue-500">Login</a></p>
         </div>
       </div>
     </div>
