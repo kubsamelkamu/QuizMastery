@@ -29,7 +29,7 @@ function Login(){
         setError('Please verify your email address before signing in.');
         await auth.signOut();  
       } else {
-        navigate('/quiz');
+        navigate('/home');
       }
     } catch (err) {
       const errorCode = err.code;
