@@ -1,77 +1,38 @@
-# GitHub User Search
+# QuizMastery
 
-## Table of Contents
+## 📚 A fun and interactive quiz app built with React and Firebase.
 
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Demo](#demo)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Technologies Used](#technologies-used)
-7. [Contributing](#contributing)
-8. [Feedback](#feedback)
+[![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-yellow)](https://your-live-link.firebaseapp.com)
+[![React](https://img.shields.io/badge/React-JS-blue)](https://reactjs.org/)
+
+---
+
+## 🚀 Features
+
+- 🔑 **User Authentication**: Secure login and registration using Firebase Authentication.
+- 🌗 **Dark/Light Mode**: Theme toggling between dark and light modes.
+- 📝 **Dynamic Quizzes**: Engage with dynamically generated quizzes.
+- 📊 **Results Tracking**: See your results after completing the quizzes.
+- 🔐 **Private Routes**: Only authenticated users can access certain parts of the app.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend**: React (functional components, hooks)
+- **Styling**: Tailwind CSS for responsive and modern design
+- **Backend**: Firebase Authentication & Firebase Hosting
+- **Routing**: React Router for navigation
+- **State Management**: React Context API for theme and authentication management
+
+---
+
+## 🎮 Screenshots
+
+| Homepage                          | Quiz Page                           | Results Page                        |
+|----------------------------------- |------------------------------------ |------------------------------------ |
+| ![Homepage](./screenshots/home.png) | ![Quiz Page](./screenshots/quiz.png) | ![Results Page](./screenshots/results.png) |
+
+---
 
 
-## Project Overview
-
-**GitHub User Search** is a web application that allows users to search for GitHub profiles by username. The application provides an interactive UI to display user details, including repositories, followers, and more. It is built with React and includes a light/dark theme toggle feature.
-
-## Features
-
-- **Search GitHub Users:** Enter a GitHub username to retrieve user details.
-- **Responsive Design:** Optimized for both desktop and mobile devices.
-- **Theme Toggle:** Switch between light and dark modes.
-- **Repository List:** View a list of repositories belonging to the user.
-- **Feedback Section:** Users can submit feedback to help improve the application.
-- **Interactive UI:** Modern design with animations and user-friendly interactions.
-
-## Demo
-
-Check out the live demo: [GitHub User Search ](https://gith-user-search.netlify.app/)
-
-## Installation
-
-To run this project locally, follow these steps:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/github-user-search.git
-   cd github-user-search
-2. **Install Dependencies**
-    npm install
-3.**Run Application**
-   npm run dev
-4.Open your browser and visit http://localhost:5173/
-## Usage
-
-1. **Search for a User:**
-   - Type a GitHub username into the search bar and press Enter.
-   - The application will fetch and display the user’s profile details, including their avatar, bio, repositories, followers, and following.
-
-2. **Explore Repositories:**
-   - Scroll through the list of repositories displayed on the user's profile.
-   - Click on a repository to view more details or visit the repository on GitHub.
-
-3. **Toggle Theme:**
-   - Use the theme toggle button in the header to switch between light and dark modes for a better viewing experience.
-
-4. **Submit Feedback:**
-   - Scroll to the footer and find the feedback section.
-   - Enter your feedback in the provided textarea and click the "Submit Feedback" button.
-
-5. **Responsive Design:**
-   - The application is responsive and can be used on various screen sizes, including desktops, tablets, and mobile devices.
-
-## Technologies Used
-
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A fast build tool that provides an optimized development experience.
-- **Tailwind CSS**: A utility-first CSS framework for designing responsive and modern UI components.
-- **Axios**: A promise-based HTTP client used to fetch data from the GitHub API.
-- **GitHub API**: Provides access to user data, repositories, and other resources from GitHub.
-- **React Icons**: A collection of popular icons used to enhance the user interface.
-- **ThemeContext**: A custom context in React for managing the light/dark theme across the application.
-
-## Contributing
-
-Your Contributions are welcome and appreciated!
