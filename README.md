@@ -2,7 +2,7 @@
 
 ## 📚 A fun and interactive quiz app built with React and Firebase.
 
-[![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-yellow)](https://your-live-link.firebaseapp.com)
+[![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-yellow)](https://quizmastery-56c16.web.app/)
 [![React](https://img.shields.io/badge/React-JS-blue)](https://reactjs.org/)
 
 ---
@@ -27,12 +27,12 @@
 
 ---
 
-## 🎮 Screenshots
+## Contribution
+Contributions are welcome! If you have suggestions or improvements, please submit a pull request or open an issue.
 
-| Homepage                          | Quiz Page                           | Results Page                        |
-|----------------------------------- |------------------------------------ |------------------------------------ |
-| ![Homepage](./screenshots/home.png) | ![Quiz Page](./screenshots/quiz.png) | ![Results Page](./screenshots/results.png) |
+## See Live 
+![QuizMastery](https://quizmastery-56c16.web.app/)
 
----
+
 
 
