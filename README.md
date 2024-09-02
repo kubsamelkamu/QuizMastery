@@ -31,7 +31,7 @@
 Contributions are welcome! If you have suggestions or improvements, please submit a pull request or open an issue.
 
 ## See Live 
-![QuizMastery](https://quizmastery-56c16.web.app/)
+[QuizMastery](https://quizmastery-56c16.web.app/)
 
 
 
